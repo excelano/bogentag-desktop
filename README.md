@@ -38,6 +38,14 @@ open.
 About Bogenzeit, opened on first run and again from the toolbar or with F1,
 explains the standard with the numbers for your own place.
 
+## Install
+
+On Debian and Ubuntu, from the Excelano apt repository:
+
+```
+curl -fsSL https://excelano.com/apt/setup.sh | sudo sh && sudo apt install bogentag
+```
+
 ## Building
 
 It is a Rust crate and builds with a current stable toolchain:
