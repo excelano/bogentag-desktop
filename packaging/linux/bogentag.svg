@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Author: David M. Anderson
+     Built with AI assistance (Claude, Anthropic) -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="disc"><circle cx="512" cy="512" r="380"/></clipPath>
+  </defs>
+  <g transform="translate(64 64) scale(0.875)">
+    <rect width="1024" height="1024" rx="219.43" fill="#0F1726"/>
+    <g clip-path="url(#disc)">
+      <rect width="1024" height="1024" fill="#0A1222"/>
+      <rect width="1024" height="553" fill="#4C86C4"/>
+      <rect y="553" width="1024" height="52" fill="#2A4470"/>
+      <rect y="605" width="1024" height="55" fill="#1B2D50"/>
+      <rect y="660" width="1024" height="52" fill="#121F38"/>
+      <line x1="0" y1="553" x2="1024" y2="553" stroke="#F2F5FA" stroke-opacity="0.6" stroke-width="6"/>
+    </g>
+    <circle cx="512" cy="512" r="380" fill="none" stroke="#DDE6F2" stroke-opacity="0.5" stroke-width="22"/>
+    <circle cx="512" cy="200" r="35" fill="none" stroke="#F2F5FA" stroke-width="11"/>
+    <circle cx="512" cy="200" r="10" fill="#F2F5FA"/>
+    <circle cx="400" cy="241" r="83" fill="#FFE2A0" fill-opacity="0.22"/>
+    <circle cx="400" cy="241" r="50" fill="#FFE2A0"/>
+  </g>
+</svg>

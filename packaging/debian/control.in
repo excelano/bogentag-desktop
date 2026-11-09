@@ -1,0 +1,19 @@
+Package: bogentag
+Version: @VERSION@
+Architecture: @ARCH@
+Maintainer: David M. Anderson <david.anderson@excelano.com>
+Installed-Size: @SIZE@
+Section: utils
+Priority: optional
+Homepage: https://github.com/excelano/bogentag-desktop
+Depends: libc6, libgcc-s1, libwayland-client0, libxkbcommon0, libxkbcommon-x11-0, libegl1, libvulkan1 | libgl1, libx11-6, libx11-xcb1, libxi6, libxcursor1, libxrandr2, desktop-file-utils, hicolor-icon-theme
+Description: The time read from the Sun's arc
+ Bogentag shows the time as Bogenzeit: where the Sun is on its arc for the
+ day, in spans before or after solar noon or solar midnight where you are,
+ or in kiloseconds from them. The dial is a sky with its twilight bands and
+ the Sun on its track; a click on it shows UTC and the local clock.
+ .
+ It has a day page with the lengths of the day and night arcs and the times
+ of sunrise, solar noon, sunset and solar midnight, a timer and a stopwatch
+ that count in spans or kiloseconds, and an explainer of the standard.
+ Everything is computed on this computer; it makes no network connection.

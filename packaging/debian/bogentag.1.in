@@ -1,0 +1,70 @@
+.\" Manual page for bogentag. @VERSION@ is filled in by build-deb.sh.
+.\"
+.\" Author: David M. Anderson
+.\" Built with AI assistance (Claude, Anthropic)
+.TH BOGENTAG 1 "2026\-11\-09" "bogentag @VERSION@" "User Commands"
+.SH NAME
+bogentag \- the time read from the Sun's arc
+.SH SYNOPSIS
+.B bogentag
+.RB [ \-\-demo
+.RB [ \-\-at
+.IR RFC3339 ]
+.RB [ \-\-place
+.IR LAT , LON ]
+.RB [ \-\-dial
+.IR spans | kiloseconds ]
+.RB [ \-\-precision
+.IR low | medium | high ]]
+.SH DESCRIPTION
+.B Bogentag
+shows the time in Bogenzeit. Each half of the Sun's arc holds 100 spans:
+sunrise to solar noon, solar noon to sunset, and the same on either side of
+solar midnight. The Spans dial draws every day the same shape and reads the
+position in spans; the Kiloseconds dial moves the Sun evenly and reads the
+time from the nearest anchor in kiloseconds.
+.PP
+A click on the dial shows UTC, the local clock with its zone, the date, and
+the day's sunrise and sunset. The Day page gives the lengths of the day and
+night arcs and the times of the day's four events. The timer counts down in
+spans or kiloseconds and the desktop announces its end; the stopwatch counts
+up, with laps. About Bogenzeit explains the standard.
+.SH OPTIONS
+.TP
+.B \-\-demo
+Show Houston at 17:08 UTC on 1 November 2026, the worked example of the
+Bogenzeit specification, and save nothing.
+.TP
+.BI \-\-at " RFC3339"
+With
+.BR \-\-demo ,
+show this instant instead.
+.TP
+.BI \-\-place " LAT,LON"
+With
+.BR \-\-demo ,
+show this place instead, in degrees, north and east positive.
+.TP
+.BI \-\-dial " spans|kiloseconds"
+With
+.BR \-\-demo ,
+open on this dial.
+.TP
+.BI \-\-precision " low|medium|high"
+With
+.BR \-\-demo ,
+read the dial at this precision.
+.SH FILES
+.TP
+.I ~/.config/bogentag/settings.json
+The dial, the precision, the place and the last timer amounts.
+.TP
+.I ~/.config/bogentag/timing.json
+The running or paused timer and the stopwatch, kept across restarts.
+.SH EXIT STATUS
+Returns success when the window has been closed. A non\-zero status means the
+window could not be created at all: no display, or no usable graphics driver.
+.SH SEE ALSO
+.BR bz (1)
+.SH AUTHOR
+David M. Anderson <david.anderson@excelano.com>

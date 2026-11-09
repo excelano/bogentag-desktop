@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Bogentag
+GenericName=Solar Clock
+Comment=The time read from the Sun's arc
+Exec=bogentag
+Icon=bogentag
+Terminal=false
+Categories=Utility;Clock;
+Keywords=clock;sun;solar;bogenzeit;timer;stopwatch;sunrise;sunset;
+StartupNotify=true
+StartupWMClass=bogentag
