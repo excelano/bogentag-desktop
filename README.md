@@ -15,7 +15,7 @@ shows the same dial.
 
 The window is the dial: a sky with the day above the horizon, the three
 twilight bands below it and the night at the bottom, the Sun on its track, and
-the reading in the centre with the eighth of the day it falls in. The Spans dial
+the reading in the center with the eighth of the day it falls in. The Spans dial
 draws every day the same shape, with sunrise always at nine o'clock and sunset
 at three, and the season shows in the twilight bands. The Kiloseconds dial moves
 the Sun evenly through a day of 86.4 kiloseconds, so the horizon rises and falls
@@ -65,9 +65,9 @@ your latitude and longitude on first run; Settings changes them later.
 
 ## Privacy
 
-The place, the settings and any running timer stay in `~/.config/bogentag`.
 Bogentag makes no network connection: every reading is computed on this
-computer.
+computer. [What Bogentag stores](SECURITY.md#what-bogentag-stores) lists the
+files it keeps.
 
 ## The standard
 
@@ -76,4 +76,4 @@ which also holds the `bz` engine this app computes with.
 
 ## License
 
-MIT.
+MIT. See [LICENSE](LICENSE).
