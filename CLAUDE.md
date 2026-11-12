@@ -31,7 +31,7 @@ The `screenshot` feature lets a build photograph its own window:
 `BOGENTAG_SCREENSHOT=<png>` saves one after `BOGENTAG_SCREENSHOT_DELAY` seconds
 and closes, `BOGENTAG_SCREENSHOT_SIZE=<w>x<h>` sizes the window, and
 `BOGENTAG_SCREENSHOT_OPEN` opens `settings`, `civil`, `timer`, `timer:<amount>`
-(started), `stopwatch` or `about:<page>` first. Point
+(started), `stopwatch`, `sidebar:closed` or `about:<page>` first. Point
 `XDG_CONFIG_HOME` at a scratch directory to run without touching the real
 profile.
 
