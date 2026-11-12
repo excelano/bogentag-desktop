@@ -1,3 +1,9 @@
+bogentag (0.2.0) unstable; urgency=medium
+
+  * Day, Timer and Stopwatch sit atop the sidebar, which now folds away to give the dial the whole window
+
+ -- David M. Anderson <david.anderson@excelano.com>  Wed, 11 Nov 2026 21:10:16 -0600
+
 bogentag (0.1.0) unstable; urgency=medium
 
   * Bogentag for the Linux desktop: the Spans and Kiloseconds dials, the clock on a click, the day's arcs and events, a timer and stopwatch in spans or kiloseconds, and the About Bogenzeit explainer
