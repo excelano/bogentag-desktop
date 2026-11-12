@@ -23,6 +23,7 @@ pub struct Settings {
     pub precision: Precision,
     pub place: Option<Place>,
     pub tour_seen: bool,
+    pub sidebar: bool,
     pub timer_spans: f64,
     pub timer_seconds: f64,
 }
@@ -34,6 +35,7 @@ impl Default for Settings {
             precision: Precision::Medium,
             place: None,
             tour_seen: false,
+            sidebar: true,
             timer_spans: 5.0,
             timer_seconds: 1000.0,
         }

@@ -54,7 +54,7 @@ pub struct App {
     timing: Timing,
     clock: Clock,
     demo: Option<Demo>,
-    panel: Option<Panel>,
+    panel: Panel,
     civil: bool,
     settings_open: bool,
     tour: Option<usize>,
@@ -95,7 +95,7 @@ impl App {
             timing,
             clock,
             demo,
-            panel: Some(Panel::Day),
+            panel: Panel::Day,
             civil: false,
             settings_open: false,
             tour,
@@ -112,18 +112,18 @@ impl App {
             Some(("about", page)) => {
                 self.tour = page.parse().ok().filter(|&page| page < tour::PAGES)
             }
-            Some(("panel", "none")) => self.panel = None,
+            Some(("sidebar", "closed")) => self.settings.sidebar = false,
             Some(("timer", amount)) => {
                 if let (Ok(amount), Some(place)) = (amount.parse(), self.settings.place) {
                     let unit = timing::Unit::of(self.settings.scale);
                     self.timing.start_timer(amount, unit, self.now(), place);
-                    self.panel = Some(Panel::Timer);
+                    self.panel = Panel::Timer;
                 }
             }
             _ if what == "settings" => self.settings_open = true,
             _ if what == "civil" => self.civil = true,
-            _ if what == "timer" => self.panel = Some(Panel::Timer),
-            _ if what == "stopwatch" => self.panel = Some(Panel::Stopwatch),
+            _ if what == "timer" => self.panel = Panel::Timer,
+            _ if what == "stopwatch" => self.panel = Panel::Stopwatch,
             _ => {}
         }
     }
@@ -163,24 +163,55 @@ impl App {
         ));
     }
 
-    fn toolbar(&mut self, ui: &mut Ui) {
+    fn tabs(&mut self, ui: &mut Ui) {
+        let gap = 6.0;
+        let width = (ui.available_width() - gap * 2.0) / 3.0;
         ui.horizontal(|ui| {
-            ui.spacing_mut().item_spacing.x = 6.0;
+            ui.spacing_mut().item_spacing.x = gap;
             for panel in Panel::ALL {
                 let running = match panel {
                     Panel::Day => false,
                     Panel::Timer => self.timing.timer.is_some(),
                     Panel::Stopwatch => self.timing.stopwatch.as_ref().is_some_and(|s| s.running()),
                 };
-                let selected = self.panel == Some(panel);
+                let selected = self.panel == panel;
                 let label = if running && !selected {
                     format!("{} \u{2022}", panel.title())
                 } else {
                     panel.title().to_string()
                 };
-                if widgets::choice(ui, &label, selected, true).clicked() {
-                    self.panel = if selected { None } else { Some(panel) };
+                if widgets::choice_sized(ui, &label, selected, true, width).clicked() {
+                    self.panel = panel;
                 }
+            }
+        });
+    }
+
+    fn sidebar_toggle(&mut self, ui: &mut Ui) {
+        let (symbol, hint) = if self.settings.sidebar {
+            ("\u{203A}", "Hide the sidebar")
+        } else {
+            ("\u{2039}", "Show the sidebar")
+        };
+        let corner = ui.max_rect().right_top();
+        let rect =
+            egui::Rect::from_min_size(corner - egui::vec2(40.0, 0.0), egui::vec2(40.0, 40.0));
+        if ui
+            .put(
+                rect,
+                egui::Button::new(RichText::new(symbol).size(30.0)).frame(false),
+            )
+            .on_hover_text(hint)
+            .clicked()
+        {
+            self.settings.sidebar = !self.settings.sidebar;
+        }
+    }
+
+    fn links(&mut self, ui: &mut Ui) {
+        ui.horizontal(|ui| {
+            if ui.button("About Bogenzeit").clicked() {
+                self.tour = Some(0);
             }
             ui.with_layout(Layout::right_to_left(Align::Center), |ui| {
                 if ui
@@ -190,9 +221,6 @@ impl App {
                 {
                     self.settings_open = !self.settings_open;
                 }
-                if ui.button("About Bogenzeit").clicked() {
-                    self.tour = Some(0);
-                }
             });
         });
     }
@@ -201,17 +229,24 @@ impl App {
         let now = self.now();
         let reading = bz::Reading::at(now, place.latitude, place.longitude);
 
-        egui::Panel::top("toolbar").show(ui, |ui| {
-            ui.add_space(6.0);
-            self.toolbar(ui);
-            ui.add_space(6.0);
-        });
-        if let Some(panel) = self.panel {
-            egui::Panel::right("panel")
-                .resizable(false)
-                .exact_size(PANEL_WIDTH)
-                .frame(egui::Frame::side_top_panel(&ui.ctx().global_style()).inner_margin(16))
-                .show(ui, |ui| match panel {
+        let mut sidebar = self.settings.sidebar;
+        egui::Panel::right("panel")
+            .resizable(false)
+            .exact_size(PANEL_WIDTH)
+            .frame(egui::Frame::side_top_panel(&ui.ctx().global_style()).inner_margin(16))
+            .show_collapsible(ui, &mut sidebar, |ui| {
+                egui::Panel::top("tabs")
+                    .frame(egui::Frame::NONE.inner_margin(egui::Margin {
+                        bottom: 16,
+                        ..Default::default()
+                    }))
+                    .show_separator_line(false)
+                    .show(ui, |ui| self.tabs(ui));
+                egui::Panel::bottom("links")
+                    .frame(egui::Frame::NONE)
+                    .show_separator_line(false)
+                    .show(ui, |ui| self.links(ui));
+                match self.panel {
                     Panel::Day => day::show(ui, &reading, self.clock),
                     Panel::Timer => {
                         self.timer_panel
@@ -220,8 +255,9 @@ impl App {
                     Panel::Stopwatch => {
                         stopwatch::show(ui, &mut self.timing, self.settings.scale, now, place)
                     }
-                });
-        }
+                }
+            });
+        self.settings.sidebar = sidebar;
         egui::CentralPanel::default()
             .frame(egui::Frame::NONE.fill(palette::NIGHT).inner_margin(16))
             .show(ui, |ui| {
@@ -248,6 +284,7 @@ impl App {
                 } else {
                     dial::paint(ui.painter(), rect, &model, &face);
                 }
+                self.sidebar_toggle(ui);
             });
         if let Some(page) = &mut self.tour
             && !tour::show(ui.ctx(), page, &reading, self.clock)
