@@ -1,3 +1,9 @@
+bogentag-dial (0.4.0) unstable; urgency=medium
+
+  * Renamed to Bogentag Dial: the package and command are now bogentag-dial, and settings carry over from bogentag
+
+ -- David M. Anderson <david.anderson@excelano.com>  Thu, 19 Nov 2026 10:08:50 -0600
+
 bogentag (0.3.0) unstable; urgency=medium
 
   * The Day panel shows how long 1, 5, 10 and 50 spans last by day and by night
