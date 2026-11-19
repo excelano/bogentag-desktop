@@ -1,3 +1,9 @@
+bogentag-dial (0.4.1) unstable; urgency=medium
+
+  * Installs alongside the bogentag package, which now installs the dial, the calendar and the GNOME extension together
+
+ -- David M. Anderson <david.anderson@excelano.com>  Thu, 19 Nov 2026 10:32:21 -0600
+
 bogentag-dial (0.4.0) unstable; urgency=medium
 
   * Renamed to Bogentag Dial: the package and command are now bogentag-dial, and settings carry over from bogentag
