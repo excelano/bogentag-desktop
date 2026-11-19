@@ -1,12 +1,12 @@
-.\" Manual page for bogentag. @VERSION@ is filled in by build-deb.sh.
+.\" Manual page for bogentag-dial. @VERSION@ is filled in by build-deb.sh.
 .\"
 .\" Author: David M. Anderson
 .\" Built with AI assistance (Claude, Anthropic)
-.TH BOGENTAG 1 "2026\-11\-09" "bogentag @VERSION@" "User Commands"
+.TH BOGENTAG-DIAL 1 "2026\-11\-09" "bogentag\-dial @VERSION@" "User Commands"
 .SH NAME
-bogentag \- the time read from the Sun's arc
+bogentag\-dial \- the time read from the Sun's arc
 .SH SYNOPSIS
-.B bogentag
+.B bogentag\-dial
 .RB [ \-\-demo
 .RB [ \-\-at
 .IR RFC3339 ]
@@ -17,7 +17,7 @@ bogentag \- the time read from the Sun's arc
 .RB [ \-\-precision
 .IR low | medium | high ]]
 .SH DESCRIPTION
-.B Bogentag
+.B Bogentag Dial
 shows the time in Bogenzeit. Each half of the Sun's arc holds 100 spans:
 sunrise to solar noon, solar noon to sunset, and the same on either side of
 solar midnight. The Spans dial draws every day the same shape and reads the
@@ -56,10 +56,10 @@ With
 read the dial at this precision.
 .SH FILES
 .TP
-.I ~/.config/bogentag/settings.json
+.I ~/.config/bogentag\-dial/settings.json
 The dial, the precision, the place and the last timer amounts.
 .TP
-.I ~/.config/bogentag/timing.json
+.I ~/.config/bogentag\-dial/timing.json
 The running or paused timer and the stopwatch, kept across restarts.
 .SH EXIT STATUS
 Returns success when the window has been closed. A non\-zero status means the

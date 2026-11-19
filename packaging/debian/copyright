@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: bogentag
+Upstream-Name: bogentag-dial
 Upstream-Contact: David M. Anderson <david.anderson@excelano.com>
-Source: https://github.com/excelano/bogentag-desktop
+Source: https://github.com/excelano/bogentag-dial
 
 Files: *
 Copyright: 2026 Excelano LLC

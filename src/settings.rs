@@ -59,7 +59,16 @@ fn config_dir() -> PathBuf {
         .map(PathBuf::from)
         .or_else(|| std::env::var_os("HOME").map(|home| PathBuf::from(home).join(".config")))
         .unwrap_or_default()
-        .join("bogentag")
+        .join("bogentag-dial")
+}
+
+/// A profile written under the former name, `bogentag`, is taken over.
+#[cfg(target_os = "linux")]
+pub fn adopt_former_profile() {
+    let dir = config_dir();
+    if !dir.exists() {
+        let _ = fs::rename(dir.with_file_name("bogentag"), dir);
+    }
 }
 
 #[cfg(target_os = "macos")]
@@ -67,7 +76,7 @@ fn config_dir() -> PathBuf {
     std::env::var_os("HOME")
         .map(PathBuf::from)
         .unwrap_or_default()
-        .join("Library/Application Support/Bogentag")
+        .join("Library/Application Support/Bogentag Dial")
 }
 
 #[cfg(windows)]
@@ -75,7 +84,7 @@ fn config_dir() -> PathBuf {
     std::env::var_os("APPDATA")
         .map(PathBuf::from)
         .unwrap_or_default()
-        .join("Bogentag")
+        .join("Bogentag Dial")
 }
 
 pub fn load<T: DeserializeOwned>(name: &str) -> Option<T> {

@@ -1,16 +1,16 @@
 [package]
-name = "bogentag"
+name = "bogentag-dial"
 description = "The time read from the Sun's arc"
 version = "0.3.0"
 edition = "2024"
 authors = ["David M. Anderson"]
 license = "MIT"
-repository = "https://github.com/excelano/bogentag-desktop"
+repository = "https://github.com/excelano/bogentag-dial"
 publish = false
 rust-version = "1.95"
 
 [[bin]]
-name = "bogentag"
+name = "bogentag-dial"
 path = "src/main.rs"
 
 [dependencies]

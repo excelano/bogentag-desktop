@@ -59,7 +59,7 @@ esac
 if [ -z "$binary" ]; then
     target_dir=$(cd "$root" && cargo metadata --format-version 1 --no-deps |
         sed -n 's/.*"target_directory":"\([^"]*\)".*/\1/p')
-    binary="${target_dir}/release/bogentag"
+    binary="${target_dir}/release/bogentag-dial"
 fi
 [ -x "$binary" ] || {
     echo "check-libraries.sh: no executable at $binary — cargo build --release first" >&2

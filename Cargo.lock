@@ -476,7 +476,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "bogentag"
+name = "bogentag-dial"
 version = "0.3.0"
 dependencies = [
  "bz",

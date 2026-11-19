@@ -15,21 +15,21 @@ pub struct Screenshot {
 
 impl Screenshot {
     pub fn size() -> Option<[f32; 2]> {
-        let text = std::env::var("BOGENTAG_SCREENSHOT_SIZE").ok()?;
+        let text = std::env::var("BOGENTAG_DIAL_SCREENSHOT_SIZE").ok()?;
         let (width, height) = text.split_once('x')?;
         Some([width.parse().ok()?, height.parse().ok()?])
     }
 
     pub fn opening() -> Option<String> {
-        std::env::var("BOGENTAG_SCREENSHOT_OPEN").ok()
+        std::env::var("BOGENTAG_DIAL_SCREENSHOT_OPEN").ok()
     }
 
     pub fn from_environment() -> Option<Screenshot> {
-        let settle = std::env::var("BOGENTAG_SCREENSHOT_DELAY")
+        let settle = std::env::var("BOGENTAG_DIAL_SCREENSHOT_DELAY")
             .ok()
             .and_then(|text| text.parse().ok())
             .unwrap_or(1.0);
-        std::env::var_os("BOGENTAG_SCREENSHOT").map(|path| Screenshot {
+        std::env::var_os("BOGENTAG_DIAL_SCREENSHOT").map(|path| Screenshot {
             path: path.into(),
             settle,
             requested: false,

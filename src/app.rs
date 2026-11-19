@@ -402,7 +402,7 @@ impl App {
                     ui.set_max_width(400.0);
                     ui.label(
                         RichText::new(
-                            "Bogentag reads the time from the Sun's arc, and solar noon, sunrise and sunset depend on where you are.",
+                            "Bogentag Dial reads the time from the Sun's arc, and solar noon, sunrise and sunset depend on where you are.",
                         )
                         .color(palette::LABEL),
                     );

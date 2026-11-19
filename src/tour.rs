@@ -143,7 +143,7 @@ fn pages(reading: &bz::Reading, clock: Clock) -> Vec<Page> {
     vec![
         Page {
             title: "Time on the Sun's arc",
-            text: "Every day the Sun rises, climbs to its highest point, sets, and passes beneath you to its lowest. Bogenzeit reads time off that arc: where the Sun is now, between those four events. The day arc runs from sunrise to sunset and the night arc from sunset to sunrise. The day arc is the Tagbogen in German; the app's name, Bogentag, turns it around.".to_string(),
+            text: "Every day the Sun rises, climbs to its highest point, sets, and passes beneath you to its lowest. Bogenzeit reads time off that arc: where the Sun is now, between those four events. The day arc runs from sunrise to sunset and the night arc from sunset to sunrise. The day arc is the Tagbogen in German; the name Bogentag turns it around.".to_string(),
             visual: Visual::Dial(Scale::Spans),
         },
         Page {

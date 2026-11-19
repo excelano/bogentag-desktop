@@ -1,10 +1,11 @@
 # CLAUDE.md
 
-Bogentag for the Linux desktop: the Bogentag dial in an egui window. It is the
-desktop sibling of excelano/bogentag, the Apple Watch and iPhone app, and
-follows that repository's `docs/bogentag-spec.md` for what the dial shows; the
-Bogenzeit spec in excelano/bogenzeit is normative. The engine is the `bz` crate
-from crates.io.
+Bogentag Dial for the Linux desktop: the Bogentag dial in an egui window. It is
+the desktop sibling of the dial in excelano/bogentag-ios, the iPhone and Apple
+Watch app, and follows that repository's `docs/bogentag-spec.md` for what the
+dial shows; the Bogenzeit spec in excelano/bogenzeit is normative. The engine is
+the `bz` crate from crates.io. Its calendar sibling on the desktop is
+excelano/bogentag-calendar.
 
 ## Layout
 
@@ -14,7 +15,8 @@ civil view a click puts over it. `display.rs` holds the display forms, `glyph.rs
 draws the four glyphs and sets numerals, `timing.rs` is the timer and stopwatch
 model with `timer.rs` and `stopwatch.rs` its panels, `day.rs` the day panel and
 `tour.rs` the About Bogenzeit pages. `system.rs` is the only file that talks to
-the desktop; `settings.rs` holds the config directory for each platform.
+the desktop; `settings.rs` holds the config directory for each platform, and
+on Linux takes over a profile left in `~/.config/bogentag`.
 
 ## Commands
 
@@ -28,9 +30,9 @@ the desktop; `settings.rs` holds the config directory for each platform.
     ./packaging/linux/check-libraries.sh
 
 The `screenshot` feature lets a build photograph its own window:
-`BOGENTAG_SCREENSHOT=<png>` saves one after `BOGENTAG_SCREENSHOT_DELAY` seconds
-and closes, `BOGENTAG_SCREENSHOT_SIZE=<w>x<h>` sizes the window, and
-`BOGENTAG_SCREENSHOT_OPEN` opens `settings`, `civil`, `timer`, `timer:<amount>`
+`BOGENTAG_DIAL_SCREENSHOT=<png>` saves one after `BOGENTAG_DIAL_SCREENSHOT_DELAY` seconds
+and closes, `BOGENTAG_DIAL_SCREENSHOT_SIZE=<w>x<h>` sizes the window, and
+`BOGENTAG_DIAL_SCREENSHOT_OPEN` opens `settings`, `civil`, `timer`, `timer:<amount>`
 (started), `stopwatch`, `sidebar:closed` or `about:<page>` first. Point
 `XDG_CONFIG_HOME` at a scratch directory to run without touching the real
 profile.

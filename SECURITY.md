@@ -10,17 +10,17 @@ Please do not open public issues for security problems.
 
 The latest release receives security fixes. Older versions are not supported. A fix ships in a new release; update the way you installed.
 
-## What Bogentag can access
+## What Bogentag Dial can access
 
-Bogentag draws the time as the Sun's position for a place the user types in.
+Bogentag Dial draws the time as the Sun's position for a place the user types in.
 It makes no network connection: no telemetry, no update check, no account. Its
 only outside contact is the desktop session bus, to read whether the clock is
 set to 12 or 24 hours and to post a notification when a timer ends.
 
-## What Bogentag stores
+## What Bogentag Dial stores
 
 The settings, the place and the timer and stopwatch, in
-`~/.config/bogentag/settings.json` and `~/.config/bogentag/timing.json`, each
+`~/.config/bogentag-dial/settings.json` and `~/.config/bogentag-dial/timing.json`, each
 created readable by its owner only. A malformed file there is read as absent,
 and is a crash worth reporting if it is not.
 

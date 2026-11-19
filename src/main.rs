@@ -29,8 +29,8 @@ use crate::app::{App, Demo};
 use crate::display::{Precision, Scale};
 use crate::settings::Place;
 
-const APP_ID: &str = "bogentag";
-const PRODUCT: &str = "Bogentag";
+const APP_ID: &str = "bogentag-dial";
+const PRODUCT: &str = "Bogentag Dial";
 
 fn argument(flag: &str) -> Option<String> {
     let arguments: Vec<String> = std::env::args().collect();
@@ -89,6 +89,8 @@ fn visuals() -> Visuals {
 }
 
 fn main() -> eframe::Result {
+    #[cfg(target_os = "linux")]
+    settings::adopt_former_profile();
     let demo = demo();
     let viewport = egui::ViewportBuilder::default()
         .with_app_id(APP_ID)

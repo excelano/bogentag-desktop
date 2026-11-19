@@ -1,6 +1,6 @@
-# Bogentag for the Linux desktop
+# Bogentag Dial for the Linux desktop
 
-Bogentag shows the time as Bogenzeit, read from where the Sun is on its arc
+Bogentag Dial shows the time as Bogenzeit, read from where the Sun is on its arc
 rather than from hours and minutes. Each half of the arc holds 100 spans:
 sunrise to solar noon, solar noon to sunset, and the same on either side of
 solar midnight. A reading such as 18 before the noon glyph means eighteen spans
@@ -43,7 +43,7 @@ explains the standard with the numbers for your own place.
 On Debian and Ubuntu, from the Excelano apt repository:
 
 ```
-curl -fsSL https://excelano.com/apt/setup.sh | sudo sh && sudo apt install bogentag
+curl -fsSL https://excelano.com/apt/setup.sh | sudo sh && sudo apt install bogentag-dial
 ```
 
 ## Building
@@ -60,13 +60,13 @@ without asking where you are.
 
 ## First run
 
-Solar noon, sunrise and sunset depend on where you are, so Bogentag asks for
+Solar noon, sunrise and sunset depend on where you are, so Bogentag Dial asks for
 your latitude and longitude on first run; Settings changes them later.
 
 ## Privacy
 
-Bogentag makes no network connection: every reading is computed on this
-computer. [What Bogentag stores](SECURITY.md#what-bogentag-stores) lists the
+Bogentag Dial makes no network connection: every reading is computed on this
+computer. [What Bogentag Dial stores](SECURITY.md#what-bogentag-dial-stores) lists the
 files it keeps.
 
 ## The standard
